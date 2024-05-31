@@ -1,41 +1,31 @@
-import { Box, Flex, Heading, Text, Image } from "@chakra-ui/react";
-import Navbar from './Navbar'
+'use client'
+import { Box, Text, VStack, extendTheme, ChakraProvider } from '@chakra-ui/react';
+import Navbar from '../../components/Navbar';
 
-export default function Home() {
+const theme = extendTheme({
+  styles: {
+    global: {
+      body: {
+        bg: 'black',
+        color: 'white',
+      },
+    },
+  },
+});
+
+const HomePage = () => {
   return (
-    <Box
-      bgGradient="linear(to-r, black, blue.500, black)"
-      color="white"
-      minHeight="100vh"
-
-    >
-      <Navbar />
-      <Flex
-        direction={{ base: "column", md: "row" }}
-        textAlign="center"
-        fontSize="xl"
+    <ChakraProvider theme={theme}>
+      <VStack
         height="100vh"
         alignItems="center"
         justifyContent="center"
-        p={4}
-      >
-        <Box flex={1} p={2}>
-          <Heading>Welcome to Biddle</Heading>
-          <Text mt={4}>
-            Contact joshuacheng888@gmail.com for support!
-          </Text>
-        </Box>
-        <Box flex={1} p={2} display="flex" alignItems="center" justifyContent="center">
-          <Image
-            src="/sample.png"
-            alt="iPhone screenshot"
-            objectFit="contain"
-            maxW="20rem"
-            maxH="100%"
-            borderRadius={15}
-          />
-        </Box>
-      </Flex>
-    </Box>
+        bg="black">
+        <Text fontSize="4xl" color="white">Welcome to JazzBar</Text>
+        <Navbar />
+      </VStack>
+    </ChakraProvider>
   );
-}
+};
+
+export default HomePage;

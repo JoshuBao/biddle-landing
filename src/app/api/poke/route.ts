@@ -19,10 +19,10 @@ export async function GET(request: NextRequest) {
         term: 'poke',
         latitude,
         longitude,
-        limit: 1,
+        limit: 5,
       },
     });
-    return NextResponse.json(response.data.businesses[0]);
+    return NextResponse.json(response.data.businesses);
   } catch (error) {
     console.error('Error fetching data from Yelp API:', error);
     return new NextResponse('Failed to fetch data', { status: 500 });
